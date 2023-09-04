@@ -76,6 +76,43 @@ app.get('/', (req, res) => {
     res.send('Welcome to my movie collection!');
   });
 
+// Creating GET route at endpoint "/movies/title" to return JSON object of a single movie
+app.get('/movies/:title', (req,res) => {
+    res.json (movies.at.find( (movies) =>
+    { movies.title === req.params.title}));
+});
+
+// Return data about a genre (description) by the name of the movie
+app.get('/movies/:title/genre', (req, res) => {
+  let movie = movies.find((movie) => {
+    return movie.title === req.params.title;
+  });
+
+  if (!movie) {
+    const message = 'Movie with the given title not found';
+    res.status(404).send(message);
+  } else {
+    res.status(200).send(movie.genre);
+  }
+});
+
+// Return data about a director(bio, birth year, death year) by name
+app.get('/movies/directors/:directorName',(req,res) => {
+  res.json (directors.at.find( (director) =>
+    {director.name === req.params.directorName}));
+
+    if(!directorName) {
+      const message = 'Missing directors name';
+      res.status(404).send(message);
+    } else {
+      res.status(200).json(movie.director)
+    }
+  });
+
+// Allow new users to register
+app.post('/users', )
+
+
 app.use(express.static('public'));
 
 // Error-handling middleware
