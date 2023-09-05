@@ -67,6 +67,20 @@ let movies =[
   },
 ]
 
+// Example user array
+let users = [
+  {
+    id: 1,
+    name: "name1",
+    favMovies: ["movie01"],
+  },
+  {
+    id: 2,
+    name: "name2",
+    favMovies: [],
+  },
+];
+
 // Creating GET route at endpoint "/movies" returning JSON object (Returns all movies)
 app.get('/movies',(req,res)=>{
     res.json(movies);
