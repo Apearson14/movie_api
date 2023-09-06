@@ -88,7 +88,7 @@ let users = [
     id: 2,
     name: "name2",
     favMovies: [],
-  },
+  }
 ];
 
 // Creating GET route at endpoint "/movies" returning JSON object (Returns all movies)
@@ -162,14 +162,28 @@ app.put('/users/:id',(req,res) => {
 // Allow users to add a movie to their list of favorites
 
 app.post('/users/:id/movies/:title', (req,res) => {
+  const { id, title } = req.params;
+  const { userId, movieId } = req.body;
+
+  let user = users.find((user)=> user.id == userId);
+  let movie = movies.find((movie)=> movie.id == movieId);
+
+  if(movie){
+    return res.status(400).json({message: "Movie has been removed"});
+  }
+});
+
+// Allow users to deregister (only showing text a user email has been removed)
+
+app.delete('/users/:id',(req,res) => {
   const {id} = req.params;
-  const FavoriteMovie = req.body;
+  const userIndex = users.findIndex((user) => user.id == id);
 
-  let user = users.find((user)=> user.id == id);
-  let movieTitle = movies.find((movie)=> movie.title == FavoriteMovie);
-
-  if()
-})
+  if(userIndex !== -1) {
+    users.splice(userIndex, 1);
+    res.status(200).json({message: 'User email has been removed'})
+  }
+});
 
 app.use(express.static('public'));
 
