@@ -9,61 +9,71 @@ let movies =[
     title: "The Godfather",
     director: "Francis Ford Coppola",
     year: 1972,
-    genre: "Crime"
+    genre: "Crime",
+    movieId: 1
   },
   {
     title: "Step Brothers",
     director: "Adam McKay",
     year: 2008,
-    genre: "Comedy"
+    genre: "Comedy",
+    movieId: 2
   },
   {
     title: "Free Guy",
     director: "Shawn Levy",
     year: 2021,
-    genre: "Comedy/Action"
+    genre: "Comedy/Action",
+    movieId: 3
   },
   {
     title: "National Lampoon's Christmas Vacation",
     director: "Jeremiah S. Chechik",
     year: 1989,
-    genre: "Comedy"
+    genre: "Comedy",
+    movieId: 4
   },
   {
     title: "The Wolf of Wall Street",
     director: "Martin Scorsese",
     year: 2013,
-    genre: "Comedy/Crime"
+    genre: "Comedy/Crime",
+    movieId: 5
   },
   {
     title: "The Big Short",
     director: "Adam McKay",
     year: 2015,
-    genre: "Comedy/Drama"
+    genre: "Comedy/Drama",
+    movieId: 6
   },
   {
     title: "Bullet Train",
     director: "David Leitch",
     year: 2022,
-    genre: "Comedy/Action"
+    genre: "Comedy/Action",
+    movieId: 7
   },
   {
     title: "Deadpool 2",
     director: "David Leitch",
     year: 2018,
-    genre: "Comedy/Action"
+    genre: "Comedy/Action",
+    movieId: 8
   },
   {
     title: "Spirited",
     director: "Sean Anders",
     year: 2022,
-    genre: "Comedy/Holiday"
+    genre: "Comedy/Holiday",
+    movieId: 9
   },
   {
     title: "R.I.P.D.",
     director: "Robert Schwentke",
     year: 2013,
-    genre: "Comedy"
+    genre: "Comedy",
+    movieId: 10
   },
 ]
 
@@ -148,6 +158,18 @@ app.put('/users/:id',(req,res) => {
     res.status(200).json(user);
   }
 });
+
+// Allow users to add a movie to their list of favorites
+
+app.post('/users/:id/movies/:title', (req,res) => {
+  const {id} = req.params;
+  const FavoriteMovie = req.body;
+
+  let user = users.find((user)=> user.id == id);
+  let movieTitle = movies.find((movie)=> movie.title == FavoriteMovie);
+
+  if()
+})
 
 app.use(express.static('public'));
 
