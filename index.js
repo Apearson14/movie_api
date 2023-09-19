@@ -6,74 +6,74 @@ app.use(morgan('combined'));
 
 let movies =[
   {
-    title: "The Godfather",
-    director: "Francis Ford Coppola",
-    year: 1972,
-    genre: "Crime",
-    movieId: 1
+    "title": "The Godfather",
+    "director": "Francis Ford Coppola",
+    "year": 1972,
+    "genre": "Crime",
+    "movieId": 1
   },
   {
-    title: "Step Brothers",
-    director: "Adam McKay",
-    year: 2008,
-    genre: "Comedy",
-    movieId: 2
+    "title": "Step Brothers",
+    "director": "Adam McKay",
+    "year": 2008,
+    "genre": "Comedy",
+    "movieId": 2
   },
   {
-    title: "Free Guy",
-    director: "Shawn Levy",
-    year: 2021,
-    genre: "Comedy/Action",
-    movieId: 3
+    "title": "Free Guy",
+    "director": "Shawn Levy",
+    "year": 2021,
+    "genre": "Comedy/Action",
+    "movieId": 3
   },
   {
-    title: "National Lampoon's Christmas Vacation",
-    director: "Jeremiah S. Chechik",
-    year: 1989,
-    genre: "Comedy",
-    movieId: 4
+    "title": "National Lampoon's Christmas Vacation",
+    "director": "Jeremiah S. Chechik",
+    "year": 1989,
+    "genre": "Comedy",
+    "movieId": 4
   },
   {
-    title: "The Wolf of Wall Street",
-    director: "Martin Scorsese",
-    year: 2013,
-    genre: "Comedy/Crime",
-    movieId: 5
+    "title": "The Wolf of Wall Street",
+    "director": "Martin Scorsese",
+    "year": 2013,
+    "genre": "Comedy/Crime",
+    "movieId": 5
   },
   {
-    title: "The Big Short",
-    director: "Adam McKay",
-    year: 2015,
-    genre: "Comedy/Drama",
-    movieId: 6
+    "title": "The Big Short",
+    "director": "Adam McKay",
+    "year": 2015,
+    "genre": "Comedy/Drama",
+    "movieId": 6
   },
   {
-    title: "Bullet Train",
-    director: "David Leitch",
-    year: 2022,
-    genre: "Comedy/Action",
-    movieId: 7
+    "title": "Bullet Train",
+    "director": "David Leitch",
+    "year": 2022,
+    "genre": "Comedy/Action",
+    "movieId": 7
   },
   {
-    title: "Deadpool 2",
-    director: "David Leitch",
-    year: 2018,
-    genre: "Comedy/Action",
-    movieId: 8
+    "title": "Deadpool 2",
+    "director": "David Leitch",
+    "year": 2018,
+    "genre": "Comedy/Action",
+    "movieId": 8
   },
   {
-    title: "Spirited",
-    director: "Sean Anders",
-    year: 2022,
-    genre: "Comedy/Holiday",
-    movieId: 9
+    "title": "Spirited",
+    "director": "Sean Anders",
+    "year": 2022,
+    "genre": "Comedy/Holiday",
+    "movieId": 9
   },
   {
-    title: "R.I.P.D.",
-    director: "Robert Schwentke",
-    year: 2013,
-    genre: "Comedy",
-    movieId: 10
+    "title": "R.I.P.D.",
+    "director": "Robert Schwentke",
+    "year": 2013,
+    "genre": "Comedy",
+    "movieId": 10
   },
 ]
 
@@ -105,12 +105,13 @@ app.get('/movies/:title', (req, res) => {
   const movie = movies.find((movie) => movie.title === req.params.title);
 
   if (!movie) {
-      const message = 'Movie with the given title not found';
-      res.status(404).send(message);
+    const message = 'Movie with the given title not found';
+    res.status(404).json({ error: message });
   } else {
-      res.status(200).json(movie);
+    res.status(200).json(movie);
   }
 });
+
 
 
 // Return data about a genre (description) by the name of the movie
